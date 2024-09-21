@@ -9,6 +9,13 @@ const createAlert = (msg, type = "danger") => {
 };
 
 /**
+ * one number
+ */
+const getRandomNumber = () => {
+  return Math.floor(Math.random() * 9) + 1;
+};
+
+/**
  *Check a Email Is Email
  * @param {*} email
  * @returns

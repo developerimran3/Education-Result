@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -34,21 +33,21 @@
         </div>
         <div class="edu-body">
           <div class="result-form">
-            <form action="">
+            <form action="" id="result-search-form">
               <div class="form-fields-row">
                 <label for=""> Examination </label>
                 <span>:</span>
                 <select name="examination" id="">
-                  <option value="ssc">SSC/Dakhil/Equivalent</option>
-                  <option value="jsc">JSC/JDC</option>
-                  <option value="ssc">SSC/Dakhil</option>
+                  <option value="">Select One</option>
+                  <option value="SSC/Dakhil">SSC/Dakhil</option>
+                  <option value="JSC/JDC">JSC/JDC</option>
                 </select>
               </div>
               <div class="form-fields-row">
                 <label for=""> Year </label>
                 <span>:</span>
                 <select name="year" id="">
-                  <option value="barisal">Select One</option>
+                  <option value="">Select One</option>
                   <option value="2024">2024</option>
                   <option value="2023">2023</option>
                   <option value="2022">2022</option>
@@ -64,16 +63,16 @@
                 <label for=""> Board </label>
                 <span>:</span>
                 <select name="board" id="">
-                  <option value="barisal">Select One</option>
-                  <option value="barisal">Barisal</option>
-                  <option value="chittagong">Chittagong</option>
-                  <option value="comilla">Comilla</option>
-                  <option value="dhaka">Dhaka</option>
-                  <option value="dinajpur">Dinajpur</option>
-                  <option value="jessore">Jessore</option>
-                  <option value="mymensingh">Mymensingh</option>
-                  <option value="rajshahi">Rajshahi</option>
-                  <option value="sylhet">Sylhet</option>
+                  <option value="">Select One</option>
+                  <option value="Barisal">Barisal</option>
+                  <option value="Chittagong">Chittagong</option>
+                  <option value="Comilla">Comilla</option>
+                  <option value="Dhaka">Dhaka</option>
+                  <option value="Dinajpur">Dinajpur</option>
+                  <option value="Jessore">Jessore</option>
+                  <option value="Mymensingh">Mymensingh</option>
+                  <option value="Rajshahi">Rajshahi</option>
+                  <option value="Sylhet">Sylhet</option>
                 </select>
               </div>
               <div class="form-fields-row">
@@ -87,13 +86,13 @@
                 <input name="reg" type="text" />
               </div>
               <div class="form-fields-row">
-                <label for=""> 6 + 9 </label>
+                <label for="" id="edu-pazl"></label>
                 <span> = </span>
-                <input name="value_s" type="text" />
+                <input name="pazel" type="text" />
               </div>
               <div class="form-fields-row btns">
-                <button>Reset</button>
-                <button>Submit</button>
+                <button type="reset">Reset</button>
+                <button type="submit">Submit</button>
               </div>
             </form>
           </div>
@@ -114,7 +113,8 @@
     <script src="/src/data.js"></script>
     <script src="/src/functions.js"></script>
     <script src="/src/models.js"></script>
-    <script src="/src/main.js"></script>
+    <script src="/src/index.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
