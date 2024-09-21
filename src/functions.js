@@ -95,124 +95,111 @@ const timeAgo = (date) => {
   return `${years} year${years !== 1 ? "s" : ""} ago`;
 };
 
-//result functions.................
-/**
- * Mark to Grade
+/**result functions........
+ * Mark to GPA & Grade
  * @param {*} mark
  */
-const getGrade = (mark) => {
+const gpaAndGrade = (mark) => {
   let grade;
+  let gpa;
 
   if (mark >= 0 && mark < 33) {
     grade = "F";
-  } else if (mark >= 33 && mark < 40) {
-    grade = "D";
-  } else if (mark >= 40 && mark < 50) {
-    grade = "C";
-  } else if (mark >= 50 && mark < 60) {
-    grade = "B";
-  } else if (mark >= 60 && mark < 70) {
-    grade = "A-";
-  } else if (mark >= 70 && mark < 80) {
-    grade = "A";
-  } else if (mark >= 80 && mark <= 100) {
-    grade = "A+";
-  }
-  return grade;
-};
-
-/**
- * Mark to GPA
- * @param {*} mark
- */
-const getGpa = (mark) => {
-  let gpa;
-  if (mark >= 0 && mark < 33) {
     gpa = 0.0;
   } else if (mark >= 33 && mark < 40) {
+    grade = "D";
     gpa = 1.0;
   } else if (mark >= 40 && mark < 50) {
+    grade = "C";
     gpa = 2.0;
   } else if (mark >= 50 && mark < 60) {
+    grade = "B";
     gpa = 3.0;
   } else if (mark >= 60 && mark < 70) {
+    grade = "A-";
     gpa = 3.5;
   } else if (mark >= 70 && mark < 80) {
+    grade = "A";
     gpa = 4.0;
   } else if (mark >= 80 && mark <= 100) {
+    grade = "A+";
     gpa = 5.0;
+  } else {
+    grade = "Invalid";
+    gpa = "Invalid";
   }
 
-  return gpa;
+  return {
+    grade: grade,
+    gpa: gpa,
+  };
 };
 
 /**
- * To check result
- * @param {*} s1
- * @param {*} s2
- * @param {*} s3
- * @param {*} s4
- * @param {*} s5
- * @param {*} s6
+ * get final Result
  */
-const isPassed = (s1, s2, s3, s4, s5, s6, s7) => {
+
+const resultSystemPro = (marks) => {
+  const { bangla, english, mathematics, sosal_Science, science, religion } =
+    marks;
+
+  const totalgpaAvg =
+    (gpaAndGrade(bangla).gpa +
+      gpaAndGrade(english).gpa +
+      gpaAndGrade(mathematics).gpa +
+      gpaAndGrade(sosal_Science).gpa +
+      gpaAndGrade(science).gpa +
+      gpaAndGrade(religion).gpa) /
+    6;
+
   if (
-    s1 >= 33 &&
-    s2 >= 33 &&
-    s3 >= 33 &&
-    s4 >= 33 &&
-    s5 >= 33 &&
-    s6 >= 33 &&
-    s7 >= 33
+    bangla >= 33 &&
+    english >= 33 &&
+    mathematics >= 33 &&
+    sosal_Science >= 33 &&
+    science >= 33 &&
+    religion >= 33
   ) {
-    return true;
+    if (totalgpaAvg >= 0 && totalgpaAvg < 1) {
+      return {
+        gpa: 0.0,
+        grade: "F",
+      };
+    } else if (totalgpaAvg >= 1 && totalgpaAvg < 2) {
+      return {
+        gpa: 1.0,
+        grade: "D",
+      };
+    } else if (totalgpaAvg >= 2 && totalgpaAvg < 3) {
+      return {
+        gpa: 2.0,
+        grade: "C",
+      };
+    } else if (totalgpaAvg >= 3 && totalgpaAvg < 3.5) {
+      return {
+        gpa: 3.0,
+        grade: "B",
+      };
+    } else if (totalgpaAvg >= 3.5 && totalgpaAvg < 4) {
+      return {
+        gpa: 3.5,
+        grade: "C",
+      };
+    } else if (totalgpaAvg >= 4 && totalgpaAvg < 5) {
+      return {
+        gpa: 4.0,
+        grade: "A",
+      };
+    } else if (totalgpaAvg >= 5) {
+      return {
+        gpa: 5,
+        grade: "A+",
+      };
+    }
   } else {
-    return false;
-  }
-};
-
-/**
- * Get Final GPA
- * @param {*} s1
- * @param {*} s2
- * @param {*} s3
- * @param {*} s4
- * @param {*} s5
- * @param {*} s6
- * @returns
- */
-let getFinalGPA = (s1, s2, s3, s4, s5, s6) => {
-  if (s1 >= 33 && s2 >= 33 && s3 >= 33 && s4 >= 33 && s5 >= 33 && s6 >= 33) {
-    let totalGpa =
-      getGpa(s1) +
-      getGpa(s2) +
-      getGpa(s3) +
-      getGpa(s4) +
-      getGpa(s5) +
-      getGpa(s6);
-
-    return totalGpa / 6;
-  } else {
-    return 0;
-  }
-};
-
-let getFinalGrade = (s1, s2, s3, s4, s5, s6, s7) => {
-  let finalGpa = getFinalGPA(s1, s2, s3, s4, s5, s6, s7);
-
-  if (finalGpa >= 0 && finalGpa < 1) {
-    return "F";
-  } else if (finalGpa >= 1 && finalGpa < 2) {
-    return "D";
-  } else if (finalGpa >= 2 && finalGpa < 3) {
-    return "C";
-  } else if (finalGpa >= 3 && finalGpa < 3.5) {
-    return "B";
-  } else if (finalGpa >= 3.5 && finalGpa < 4) {
-    return "A-";
-  } else if (finalGpa >= 4 && finalGpa < 5) {
-    return "A";
-  } else if (finalGpa >= 5) {
-    return "A+";
+    return {
+      gpa: 0,
+      grade: "F",
+    };
   }
 };

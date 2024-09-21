@@ -125,7 +125,7 @@ studentResultForm.onsubmit = (e) => {
     !data.bangla ||
     !data.english ||
     !data.mathematics ||
-    !data.socil_Science ||
+    !data.socil_science ||
     !data.science ||
     !data.religion
   ) {
@@ -145,7 +145,7 @@ studentResultForm.onsubmit = (e) => {
           bangla: data.bangla,
           english: data.english,
           mathematics: data.mathematics,
-          socil_Science: data.socil_Science,
+          socil_science: data.socil_science,
           science: data.science,
           religion: data.religion,
         },
@@ -177,8 +177,8 @@ const updateStudentResultModel = (id) => {
     updateData.results.english;
   updateStudentResultForm.querySelector('input[name="mathematics"]').value =
     updateData.results.mathematics;
-  updateStudentResultForm.querySelector('input[name="socil_Science"]').value =
-    updateData.results.socil_Science;
+  updateStudentResultForm.querySelector('input[name="socil_science"]').value =
+    updateData.results.socil_science;
   updateStudentResultForm.querySelector('input[name="science"]').value =
     updateData.results.science;
   updateStudentResultForm.querySelector('input[name="religion"]').value =
@@ -205,7 +205,7 @@ updateStudentResultForm.onsubmit = (e) => {
           bangla: data.bangla,
           english: data.english,
           mathematics: data.mathematics,
-          socil_Science: data.socil_Science,
+          socil_science: data.socil_science,
           science: data.science,
           religion: data.religion,
         },

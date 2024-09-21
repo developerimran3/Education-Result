@@ -43,20 +43,31 @@ markSheet.innerHTML = `
                 </tr>
                 <tr>
                   <td>Result</td>
-                  <td class="fw-bold">PASSED</td>
+                  <td class="fw-bold">${
+                    resultSystemPro({
+                      bangla: searchData.results.bangla,
+                      english: searchData.results.english,
+                      mathematics: searchData.results.mathematics,
+                      sosal_Science: searchData.results.socil_science,
+                      science: searchData.results.science,
+                      religion: searchData.results.religion,
+                    }).grade
+                      ? "Passed"
+                      : "Failed"
+                  }</td>
                   <td>Institute</td>
                   <td>${searchData.institute}</td>
                 </tr>
                 <tr>
                   <td>GPA</td>
-                  <td colspan="3" class="fw-bold">${getFinalGPA({
-                    s1: searchData.results.bangla,
-                    s2: searchData.results.english,
-                    s3: searchData.results.mathematics,
-                    s4: searchData.results.socil_Science,
-                    s5: searchData.results.science,
-                    s6: searchData.results.religion,
-                  })} </td>
+                  <td colspan="3" class="fw-bold">${resultSystemPro({
+                    bangla: searchData.results.bangla,
+                    english: searchData.results.english,
+                    mathematics: searchData.results.mathematics,
+                    sosal_Science: searchData.results.socil_science,
+                    science: searchData.results.science,
+                    religion: searchData.results.religion,
+                  }).gpa.toFixed(2)}</td>
                 </tr>
               </table>
             </div>
@@ -77,43 +88,59 @@ markSheet.innerHTML = `
                   <tr>
                     <td>101</td>
                     <td>BANGLA</td>
-                    <td>${getGrade(searchData.results.bangla)} </td>
-                    <td>${getGpa(searchData.results.bangla)}</td>
+                    <td>${gpaAndGrade(searchData.results.bangla).grade} </td>
+                    <td>${gpaAndGrade(searchData.results.bangla).gpa.toFixed(
+                      2
+                    )}</td>
                   </tr>
                   <tr>
                     <td>102</td>
                     <td>ENGLISH</td>
-                    <td>${getGrade(searchData.results.english)} </td>
-                    <td>${getGpa(searchData.results.english)}</td>
+                    <td>${gpaAndGrade(searchData.results.english).grade} </td>
+                    <td>${gpaAndGrade(searchData.results.english).gpa.toFixed(
+                      2
+                    )}</td>
                   </tr>
                   <tr>
                     <td>109</td>
                     <td>MATHEMATICS</td>
-                    <td>${getGrade(searchData.results.mathematics)} </td>
-                    <td>${getGpa(searchData.results.mathematics)}</td>
+                    <td>${
+                      gpaAndGrade(searchData.results.mathematics).grade
+                    } </td>
+                    <td>${gpaAndGrade(
+                      searchData.results.mathematics
+                    ).gpa.toFixed(2)}</td>
                   </tr>
                   <tr>
                     <td>145</td>
                     <td>SOCIAL SCIENCE</td>
-                    <td>${getGrade(searchData.results.socil_Science)} </td>
-                    <td>${getGpa(searchData.results.socil_Science)}</td>
+                    <td>${
+                      gpaAndGrade(searchData.results.socil_science).grade
+                    } </td>
+                    <td>${gpaAndGrade(
+                      searchData.results.socil_science
+                    ).gpa.toFixed(2)}</td>
                   </tr>
                   <tr>
                     <td>145</td>
                     <td>SCIENCE</td>
-                    <td>${getGrade(searchData.results.science)} </td>
-                    <td>${getGpa(searchData.results.science)}</td>
+                    <td>${gpaAndGrade(searchData.results.science).grade} </td>
+                    <td>${gpaAndGrade(searchData.results.science).gpa.toFixed(
+                      2
+                    )}</td>
                   </tr>
                   <tr>
                     <td>111</td>
                     <td>RELIGION (ISLAM)</td>
-                    <td>${getGrade(searchData.results.religion)} </td>
-                    <td>${getGpa(searchData.results.religion)}</td>
+                    <td>${gpaAndGrade(searchData.results.religion).grade} </td>
+                    <td>${gpaAndGrade(searchData.results.religion).gpa.toFixed(
+                      2
+                    )}</td>
                   </tr>
                 </tbody>
               </table>
               <div class="btns-search">
-                <a href="#" onclick= "goToSearchPage()" >Search Again</a>
+                <a href="" onclick= "goToSearchPage()" >Search Again</a>
               </div>
             </div>
           </div>
