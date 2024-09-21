@@ -181,26 +181,17 @@ const isPassed = (s1, s2, s3, s4, s5, s6, s7) => {
  * @param {*} s6
  * @returns
  */
-let getFinalGPA = (s1, s2, s3, s4, s5, s6, s7) => {
-  if (
-    s1 >= 33 &&
-    s2 >= 33 &&
-    s3 >= 33 &&
-    s4 >= 33 &&
-    s5 >= 33 &&
-    s6 >= 33 &&
-    s7 >= 33
-  ) {
+let getFinalGPA = (s1, s2, s3, s4, s5, s6) => {
+  if (s1 >= 33 && s2 >= 33 && s3 >= 33 && s4 >= 33 && s5 >= 33 && s6 >= 33) {
     let totalGpa =
       getGpa(s1) +
       getGpa(s2) +
       getGpa(s3) +
       getGpa(s4) +
       getGpa(s5) +
-      getGpa(s6) +
-      getGpa(s7);
+      getGpa(s6);
 
-    return totalGpa / 7;
+    return totalGpa / 6;
   } else {
     return 0;
   }

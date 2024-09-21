@@ -49,9 +49,14 @@ markSheet.innerHTML = `
                 </tr>
                 <tr>
                   <td>GPA</td>
-                  <td colspan="3" class="fw-bold">${getFinalGrade(
-                    searchData.results
-                  )} </td>
+                  <td colspan="3" class="fw-bold">${getFinalGPA({
+                    s1: searchData.results.bangla,
+                    s2: searchData.results.english,
+                    s3: searchData.results.mathematics,
+                    s4: searchData.results.socil_Science,
+                    s5: searchData.results.science,
+                    s6: searchData.results.religion,
+                  })} </td>
                 </tr>
               </table>
             </div>
@@ -108,10 +113,15 @@ markSheet.innerHTML = `
                 </tbody>
               </table>
               <div class="btns-search">
-                <a href="index.html">Search Again</a>
+                <a href="#" onclick= "goToSearchPage()" >Search Again</a>
               </div>
             </div>
           </div>
 
 
 `;
+
+const goToSearchPage = () => {
+  localStorage.removeItem("resultShow");
+  window.location.href = "index.html";
+};
