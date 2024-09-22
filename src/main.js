@@ -4,6 +4,7 @@ const studentDataList = document.getElementById("student-deta-list");
 const updateStudentResultForm = document.getElementById(
   "update-student-result-form"
 );
+const studentDetailsShow = document.getElementById("student-details-show");
 const msg = document.querySelector(".msg");
 const btnClose = document.querySelectorAll(".btn-close");
 
@@ -40,7 +41,9 @@ const getAllStudents = () => {
 
       <td >
 
-      <button  class="btn btn-sm btn-info"><i class="fa fa-eye" ></i></button>
+      <button  class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#student-details-show"  onclick="studentDetailesShowModal('${
+        item.id
+      }')"><i class="fa fa-eye" ></i></button>
       <button  class="btn btn-sm btn-warning"><i class="fa fa-edit" ></i></button>
       <button  class="btn btn-sm btn-danger"><i class="fa fa-trash" ></i></button>
       </td>
@@ -171,6 +174,7 @@ const updateStudentResultModel = (id) => {
 
   const updateData = studentResult.find((data) => data.id == id);
   updateStudentResultForm.querySelector('input[name="id"]').value = id;
+
   updateStudentResultForm.querySelector('input[name="bangla"]').value =
     updateData.results.bangla;
   updateStudentResultForm.querySelector('input[name="english"]').value =
@@ -219,4 +223,24 @@ updateStudentResultForm.onsubmit = (e) => {
 
   btnClose.forEach((item) => item.click());
   getAllStudents();
+};
+
+//student Detailes Show
+const studentDetailesShowModal = (id) => {
+  const studentResult = JSON.parse(localStorage.getItem("students"));
+
+  const updateData = studentResult.find((data) => data.id == id);
+  studentDetailsShow.querySelector('input[name="id"]').value = id;
+
+  studentDetailsShow.getElementById("father").value = updateData.father;
+  studentDetailsShow.querySelector('input[name="english"]').value =
+    updateData.results.english;
+  studentDetailsShow.querySelector('input[name="mathematics"]').value =
+    updateData.results.mathematics;
+  studentDetailsShow.querySelector('input[name="socil_science"]').value =
+    updateData.results.socil_science;
+  studentDetailsShow.querySelector('input[name="science"]').value =
+    updateData.results.science;
+  studentDetailsShow.querySelector('input[name="religion"]').value =
+    updateData.results.religion;
 };
